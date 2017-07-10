@@ -36,4 +36,5 @@ public class DealerTest {
         assertEquals(2, dealer.cardCount());
         assertEquals(48, deck.cardCount());
     }
+
 }
