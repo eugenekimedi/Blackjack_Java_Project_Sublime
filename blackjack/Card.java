@@ -25,7 +25,7 @@ public class Card {
         return rank == otherCard.getRank() && suit == otherCard.getSuit();
     }
 
-    public String getCardString(Card card){
-        return card.getRank().toString() + " OF " + card.getSuit().toString();
+    public String getCardString(){
+        return this.getRank().toString() + " OF " + this.getSuit().toString();
     }
 }

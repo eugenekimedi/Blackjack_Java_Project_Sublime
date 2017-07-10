@@ -1,24 +1,37 @@
 package blackjack;
-
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * Created by eugenekim on 7/7/17.
  */
 
 public class Game {
-    private HashMap <Enum, Integer> rules;
-    private Deck deck;
-    private Player player;
-    private Dealer dealer;
+  private Deck deck;
+  private Player player;
+  private Dealer dealer;
+  private Rules rules;
 
 
-    public Game() {
+  public Game() {
+    this.rules = new Rules();
+    this.deck = new Deck();
+    this.player = new Player();
+    this.dealer = new Dealer();
+    deck.setup();
+  }
 
-
-        this.deck = new Deck();
-        this.player = new Player();
-        this.dealer = new Dealer();
+  public String stringHand(ArrayList<Card> hand){
+    String cardString = "";
+    for (Card card : hand){
+      cardString += card.getCardString() + "\n";
     }
+    return cardString;
+  }
 
+  public void run() {
+    dealer.dealInitialHands(deck, player, dealer);
+    ArrayList<Card> phand = player.gethand();
+    ArrayList<Card> dhand = dealer.gethand();
+    System.out.println();
+  }
 }

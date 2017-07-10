@@ -36,6 +36,6 @@ public class CardTest {
 
     @Test
     public void canGetCardString(){
-        assertEquals("TWO OF SPADES", card.getCardString(card));
+        assertEquals("TWO OF SPADES", card.getCardString());
     }
 }
