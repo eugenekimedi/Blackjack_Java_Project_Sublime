@@ -30,8 +30,9 @@ public class Game {
 
   public void run() {
     dealer.dealInitialHands(deck, player, dealer);
-    ArrayList<Card> phand = player.gethand();
-    ArrayList<Card> dhand = dealer.gethand();
-    System.out.println();
+    ArrayList<Card> phand = player.getHand();
+    ArrayList<Card> dhand = dealer.getHand();
+    System.out.println(this.stringHand(phand));
+    System.out.println(this.stringHand(dhand));
   }
 }
