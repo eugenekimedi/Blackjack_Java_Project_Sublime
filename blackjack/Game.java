@@ -83,9 +83,14 @@ public class Game {
 
   public int dealerTurn(){
     while (rules.countValues(dealer.getHand()) < 17){
-      dealer.dealCard(deck, dealer);
-      printHands();
-      printScores();
+      System.out.println("Please enter 1 to continue");
+      Scanner sc = new Scanner(System.in);
+      int i = sc.nextInt();
+      if (i==1){
+        dealer.dealCard(deck, dealer);
+        printHands();
+        printScores();
+      }
     }
     return rules.countValues(dealer.getHand());
   }
