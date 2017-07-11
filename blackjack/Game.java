@@ -34,10 +34,8 @@ public class Game {
     dealer.dealInitialHands(deck, player, dealer);
     ArrayList<Card> phand = player.getHand();
     ArrayList<Card> dhand = dealer.getHand();
-    System.out.println("Players Hand:\n" + this.stringHand(phand));
-    System.out.println("Dealers Hand:\n" + this.stringHand(dhand));
-    System.out.println("Players Score:" + rules.countValues(phand));
-    System.out.println("Dealers Score:" + rules.countValues(dhand));
+    printHands();
+    printScores();
     if (checkBlackjack(dhand) && checkBlackjack(phand)){
       System.out.println("Draw");
       return;
@@ -54,8 +52,8 @@ public class Game {
     int i = 1;
     while(i == 1){
       i = playerTurn();
-      System.out.println("Players Hand:\n" + this.stringHand(phand));
-      System.out.println("Players Score:" + rules.countValues(phand));
+      printHands();
+      printScores();
     }
     if (rules.countValues(phand) > 21){
       System.out.println("Bust. Player Loses");
@@ -70,12 +68,12 @@ public class Game {
   }
 
   public int playerTurn(){
-    System.out.println("Enter 1 to Hit\nEnter any other int to stay");
+    System.out.println("Enter 1 to Hit\nEnter 2 to stay");
     Scanner sc = new Scanner(System.in);
     int i = sc.nextInt();
     if (i == 1 && rules.countValues(player.getHand()) < 21){
       dealer.dealCard(deck, player);
-      if (rules.countValues(player.getHand()) > 21){
+      if (rules.countValues(player.getHand()) >= 21){
         return 3;
       }
       return i;
@@ -84,16 +82,24 @@ public class Game {
   }
 
   public int dealerTurn(){
-      while (rules.countValues(dealer.getHand()) < 17){
-        dealer.dealCard(deck, dealer);
-        System.out.println("Dealers Hand:\n" + this.stringHand(dealer.getHand()));
-        System.out.println("Players Score:" + rules.countValues(player.getHand()));
-        System.out.println("Dealers Score:" + rules.countValues(dealer.getHand()));
-      }
-      return rules.countValues(dealer.getHand());
+    while (rules.countValues(dealer.getHand()) < 17){
+      dealer.dealCard(deck, dealer);
+      printHands();
+      printScores();
+    }
+    return rules.countValues(dealer.getHand());
   }
 
   public boolean checkBlackjack(ArrayList<Card>hand) {
     return (rules.countValues(hand) == 21);
+  }
+  public void printHands(){
+    System.out.println("Players Hand:\n" + this.stringHand(player.getHand()));
+    System.out.println("Dealers Hand:\n" + this.stringHand(dealer.getHand()));
+  }
+
+  public void printScores(){
+    System.out.println("Players Score:" + rules.countValues(player.getHand()));
+    System.out.println("Dealers Score:" + rules.countValues(dealer.getHand()));
   }
 }
