@@ -41,6 +41,11 @@ public class GameTest {
   }
 
   @Test
+  public void canGetDealer(){
+    assertNotNull(game.getDealer());
+  }
+
+  @Test
   public void canGetStringHand(){
     dealer.dealCard(deck, player);
     dealer.dealCard(deck, dealer);
