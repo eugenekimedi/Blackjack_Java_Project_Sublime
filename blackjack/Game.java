@@ -35,7 +35,7 @@ public class Game {
   public Dealer getDealer(){
     return this.dealer;
   }
-  
+
   public String stringHand(ArrayList<Card> hand){
     String cardString = "";
     for (Card card : hand){
@@ -44,60 +44,6 @@ public class Game {
     return cardString;
   }
 
-
-  public void run() {
-    deck.shuffle();
-    dealer.dealInitialHands(deck, player, dealer);
-    System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    ArrayList<Card> phand = player.getHand();
-    ArrayList<Card> dhand = dealer.getHand();
-    printHands("both");
-    printScores("both");
-    if (checkBlackjack(dhand) && checkBlackjack(phand)){
-      System.out.println("-----------------------------------\n               Draw\n-----------------------------------");
-      System.out.println("-----------------------------------");
-      replay();
-      return;
-    }
-    if (checkBlackjack(dhand)) {
-      System.out.println("-----------------------------------\n   Dealer blackjack, player loses\n-----------------------------------");
-      replay();
-      return;
-    }
-    if (checkBlackjack(phand)) {
-      System.out.println("-----------------------------------\n           BLACKJACK PLAYER WINS\n-----------------------------------");
-      replay();
-      return;
-    }
-
-    int i = 1;
-    while(i == 1){
-      i = playerTurn();
-      printHands("player");
-      printScores("both");
-      if (rules.countValues(phand) > 21){
-        System.out.println("-----------------------------------\n         BUST, PLAYER LOSES\n-----------------------------------");
-        replay();
-        return;
-      }
-
-    }
-    
-      int dealerScore = dealerTurn();
-      if (dealerScore > 21) {
-        System.out.println("-----------------------------------\n     Dealer Busts, Player Wins!\n-----------------------------------");
-        replay();
-        return;
-      }
-      else {
-        System.out.println("-----------------------------------");
-        System.out.println(rules.compareHands(player, dealer));
-        System.out.println("-----------------------------------");
-        replay();
-        return;
-      }
-    
-  }
 
   public int playerTurn(){
     System.out.println("-------------Players Turn-------------");
