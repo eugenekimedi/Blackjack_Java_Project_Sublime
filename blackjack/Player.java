@@ -33,5 +33,7 @@ public class Player {
         return this.hand;
     }
 
-
+    public void eraseHand(){
+        this.hand = new ArrayList<Card>();
+    }
 }

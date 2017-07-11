@@ -96,4 +96,6 @@ public class RulesTest {
         dealer.receiveCard(card2);
         assertEquals("draw", rules.compareHands(player, dealer));
     }
+
+
 }

@@ -47,4 +47,12 @@ public class PlayerTest {
         assertEquals(2, player.getHand().size());
     }
 
+    @Test
+    public void canEraseHands(){
+        player.receiveCard(card);
+        player.receiveCard(card1);
+        assertEquals(2, player.cardCount());
+        player.eraseHand();
+        assertEquals(0, player.cardCount());
+    }
 }
