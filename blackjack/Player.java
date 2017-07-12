@@ -46,4 +46,8 @@ public class Player {
     public void addMoney(int amount) {
         this.money += amount;
     }
+
+    public void subtractMoney(int amount) {
+        this.money -= amount;
+    }
 }

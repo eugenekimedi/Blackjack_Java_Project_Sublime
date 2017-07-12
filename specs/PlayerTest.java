@@ -66,4 +66,10 @@ public class PlayerTest {
         player.addMoney(10);
         assertEquals(110, player.getMoney());
     }
+
+    @Test
+    public void canSubtractMoney() {
+        player.subtractMoney(10);
+        assertEquals(90, player.getMoney());
+    }
 }
