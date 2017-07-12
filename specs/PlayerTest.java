@@ -72,4 +72,11 @@ public class PlayerTest {
         player.subtractMoney(10);
         assertEquals(90, player.getMoney());
     }
+
+    @Test
+    public void betSubtractsMoney() {
+        int playersbet = player.bet(50);
+        assertEquals(50, player.getMoney());
+        assertEquals(50, playersbet);
+    }
 }

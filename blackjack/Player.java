@@ -50,4 +50,9 @@ public class Player {
     public void subtractMoney(int amount) {
         this.money -= amount;
     }
+
+    public int bet(int amount){
+        subtractMoney(amount);
+        return amount;
+    }
 }
