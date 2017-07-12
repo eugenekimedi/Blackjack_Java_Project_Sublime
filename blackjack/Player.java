@@ -10,10 +10,12 @@ public class Player {
 
     private ArrayList<Card> hand;
     private int money;
+    private int bet;
 
     public Player() {
         this.hand = new ArrayList<Card>();
         this.money = 100;
+        this.bet = 0;
     }
 
     public int cardCount() {
@@ -51,8 +53,7 @@ public class Player {
         this.money -= amount;
     }
 
-    public int bet(int amount){
-        subtractMoney(amount);
-        return amount;
+    public int getBet(){
+        return this.bet;
     }
 }

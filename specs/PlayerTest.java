@@ -74,9 +74,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void betSubtractsMoney() {
-        int playersbet = player.bet(50);
-        assertEquals(50, player.getMoney());
-        assertEquals(50, playersbet);
+    public void canGetBet() {
+        assertEquals(0, player.getBet());
     }
 }
