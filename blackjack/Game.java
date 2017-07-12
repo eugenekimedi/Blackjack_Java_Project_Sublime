@@ -15,8 +15,8 @@ public class Game {
   public Game() {
     this.rules = new Rules();
     this.deck = new Deck();
-    this.player = new Player();
-    this.dealer = new Dealer();
+    this.player = new Player("Player");
+    this.dealer = new Dealer("Dealer");
     deck.setup();
   }
 
@@ -71,6 +71,23 @@ public class Game {
     return (rules.countValues(hand) == 21);
   }
 
+  public String announceBlackjack(Player player){
+    if (checkBlackjack(player.getHand())) {
+      return "BLACKJACK " + player.getName() + " WINS";
+    }
+    return null;
+  }
 
+  public String announceBlackjackDraw(Player player, Dealer dealer){
+    if (checkBlackjack(player.getHand()) && checkBlackjack(dealer.getHand())) {
+      return "draw";
+    } 
+    return null;
+  }
 
+  public void useNewDeck(){
+    deck = new Deck();
+    deck.setup();
+    deck.shuffle();
+  }
 }

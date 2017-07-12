@@ -10,6 +10,7 @@ import java.util.HashMap;
 public class Rules {
 
     private HashMap<Enum, Integer> rules;
+    private HashMap<String, Double> payout;
 
     public Rules() {
         rules = new HashMap<Enum, Integer>();
@@ -26,6 +27,13 @@ public class Rules {
         rules.put(Rank.QUEEN, 10 );
         rules.put(Rank.KING, 10 );
         rules.put(Rank.ACE, 11 );
+
+        payout = new HashMap<String, Double>();
+        payout.put("draw", 1.0);
+        payout.put("BLACKJACK", 2.5);
+        payout.put("player wins", 2.0);
+        payout.put("dealer wins", 0.0);
+
     }
 
     public int countValues(ArrayList<Card> hand) {

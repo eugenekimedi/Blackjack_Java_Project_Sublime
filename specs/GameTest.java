@@ -18,8 +18,8 @@ public class GameTest {
 
   @Before
   public void before(){
-    player = new Player();
-    dealer = new Dealer();
+    player = new Player("Player");
+    dealer = new Dealer("Dealer");
     game = new Game();
     deck = new Deck();
     deck.setup();

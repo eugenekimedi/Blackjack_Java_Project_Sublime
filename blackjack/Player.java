@@ -7,12 +7,13 @@ import java.util.ArrayList;
  */
 
 public class Player {
-
+    private String name;
     private ArrayList<Card> hand;
     private int money;
     private int bet;
 
-    public Player() {
+    public Player(String name) {
+        this.name = name;
         this.hand = new ArrayList<Card>();
         this.money = 100;
         this.bet = 0;
@@ -60,5 +61,9 @@ public class Player {
     public void bet(int amount){
         this.bet = amount;
         this.money -= amount;
+    }
+
+    public String getName(){
+        return this.name;
     }
 }

@@ -7,6 +7,10 @@ package blackjack;
 public class Dealer extends Player{
     Dealer dealer;
 
+    public Dealer (String name){
+        super(name);
+    }
+
 
     public void dealCard(Deck deck, Player player) {
         Card card = deck.getTop();

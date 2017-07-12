@@ -20,7 +20,7 @@ public class PlayerTest {
 
     @Before
     public void before() {
-        player = new Player();
+        player = new Player("Player");
         card = new Card(Rank.ACE, Suit.SPADES);
         card1 = new Card(Rank.TWO, Suit.CLUBS);
     }
@@ -83,5 +83,10 @@ public class PlayerTest {
         player.bet(10);
         assertEquals(10, player.getBet());
         assertEquals(90, player.getMoney());
+    }
+
+    @Test
+    public void canGetName(){
+        assertEquals("Player", player.getName());
     }
 }

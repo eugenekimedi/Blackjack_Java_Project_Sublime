@@ -20,8 +20,8 @@ public class RulesTest {
     @Before
     public void before() {
         rules = new Rules();
-        dealer = new Dealer();
-        player = new Player();
+        dealer = new Dealer("Dealer");
+        player = new Player("Player");
         card1 = new Card(Rank.ACE, Suit.SPADES);
         card2 = new Card(Rank.TEN, Suit.SPADES);
         card3 = new Card(Rank.NINE, Suit.SPADES);

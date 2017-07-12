@@ -14,37 +14,45 @@ private static Runner runner;
 
   public static void main(String[] args) {
     game = new Game();
+    game.getDeck().shuffle();
     runner = new Runner();
     runner.run();
   }
 
 
   public void run(){
-    game.getDeck().shuffle();
+    if (game.getDeck().cardCount() < 10) {
+      game.useNewDeck();
+    }
     game.getDealer().dealInitialHands(game.getDeck(), game.getPlayer(), game.getDealer());
     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     ArrayList<Card> phand = game.getPlayer().getHand();
     ArrayList<Card> dhand = game.getDealer().getHand();
     printHands("both");
     printScores("both");
+    String bothBlackjack = game.announceBlackjackDraw(game.getPlayer(), game.getDealer());
     if (game.checkBlackjack(dhand) && game.checkBlackjack(phand)){
-      System.out.println("-----------------------------------\n               Draw\n-----------------------------------");
+      System.out.println("-----------------------------------\n"+ bothBlackjack +"\n-----------------------------------");
       System.out.println("-----------------------------------");
       replay();
       return;
     }
-    if (game.checkBlackjack(dhand)) {
-      System.out.println("-----------------------------------\n   Dealer blackjack, player loses\n-----------------------------------");
+    String dealerWins = game.announceBlackjack(game.getDealer());
+    if (dealerWins != null) {
+      System.out.println("-----------------------------------\n"+dealerWins + "\n-----------------------------------");
       replay();
       return;
     }
-    if (game.checkBlackjack(phand)) {
-      System.out.println("-----------------------------------\n           BLACKJACK PLAYER WINS\n-----------------------------------");
+
+    String playerWins = game.announceBlackjack(game.getPlayer());
+    if (playerWins != null) {
+      System.out.println(("-----------------------------------\n" + playerWins + "\n-----------------------------------"));
       replay();
       return;
     }
+    
     int choice = 1;
-    while(choice == 1){
+    while (choice == 1){
       System.out.println("-------------Players Turn-------------");
       System.out.println("Enter 1 to Hit\nEnter 2 to stay");
       Scanner sc = new Scanner(System.in);
