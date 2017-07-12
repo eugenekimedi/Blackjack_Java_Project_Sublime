@@ -42,4 +42,8 @@ public class Player {
     public int getMoney(){
         return this.money;
     }
+
+    public void addMoney(int amount) {
+        this.money += amount;
+    }
 }

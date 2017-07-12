@@ -60,4 +60,10 @@ public class PlayerTest {
     public void canGetMoney() {
         assertEquals(100, player.getMoney());
     }
+
+    @Test
+    public void canAddMoney() {
+        player.addMoney(10);
+        assertEquals(110, player.getMoney());
+    }
 }
