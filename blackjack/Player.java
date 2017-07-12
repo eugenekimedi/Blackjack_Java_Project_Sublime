@@ -9,9 +9,11 @@ import java.util.ArrayList;
 public class Player {
 
     private ArrayList<Card> hand;
+    private int money;
 
     public Player() {
         this.hand = new ArrayList<Card>();
+        this.money = 100;
     }
 
     public int cardCount() {
@@ -35,5 +37,9 @@ public class Player {
 
     public void eraseHand(){
         this.hand = new ArrayList<Card>();
+    }
+
+    public int getMoney(){
+        return this.money;
     }
 }

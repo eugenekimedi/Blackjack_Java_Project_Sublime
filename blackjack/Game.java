@@ -45,67 +45,32 @@ public class Game {
   }
 
 
-  public int playerTurn(){
-    System.out.println("-------------Players Turn-------------");
-    System.out.println("Enter 1 to Hit\nEnter 2 to stay");
-    Scanner sc = new Scanner(System.in);
-    int i = sc.nextInt();
-    if (i == 1 && rules.countValues(player.getHand()) < 21){
+  public int playerTurn(int choice){
+    if (choice == 1 && rules.countValues(player.getHand()) < 21){
       dealer.dealCard(deck, player);
       if (rules.countValues(player.getHand()) >= 21){
         return 3;
       }
-      return i;
+      return choice;
     } 
     return 2;
   }
 
-  public int dealerTurn(){
-    while (rules.countValues(dealer.getHand()) < 17){
-      System.out.println("-------------Dealers Turn--------------");
-      System.out.println("Please enter 1 to continue Dealers turn");
-      Scanner sc = new Scanner(System.in);
-      int i = sc.nextInt();
-      if (i==1){
+  public int dealerTurn(int dealerChoice){
+    //while (rules.countValues(dealer.getHand()) < 17){
         dealer.dealCard(deck, dealer);
-        printHands("dealer");
-        printScores("both");
-      }
-    }
+   // }
+    return rules.countValues(dealer.getHand());
+  }
+
+  public int getDealerScore() {
     return rules.countValues(dealer.getHand());
   }
 
   public boolean checkBlackjack(ArrayList<Card>hand) {
     return (rules.countValues(hand) == 21);
   }
-  public void printHands(String who){
-    if (who == "both"){
-      System.out.println("Players Hand:\n" + this.stringHand(player.getHand()));
-      System.out.println("Dealers Hand:\n" + this.stringHand(dealer.getHand()));
-    }
-    if (who == "player"){
-      System.out.println("Players Hand:\n" + this.stringHand(player.getHand()));
-    } 
-    if (who == "dealer"){
-      System.out.println("Dealers Hand:\n" + this.stringHand(dealer.getHand()));
-    }
-  }
 
-  public void printScores(String who){
-    if (who == "both") {
-    System.out.println("Players Score:" + rules.countValues(player.getHand()));
-    System.out.println("Dealers Score:" + rules.countValues(dealer.getHand()));
-    }
-  }
 
-  public void replay(){
-    System.out.println("Enter 1 to Play again!!");
-    Scanner sc = new Scanner(System.in);
-    int i = sc.nextInt();
-    if (i==1){
-      player.eraseHand();
-      dealer.eraseHand();
-      run();
-    }
-  }
+
 }

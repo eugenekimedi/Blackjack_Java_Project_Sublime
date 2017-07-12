@@ -55,4 +55,9 @@ public class PlayerTest {
         player.eraseHand();
         assertEquals(0, player.cardCount());
     }
+
+    @Test
+    public void canGetMoney() {
+        assertEquals(100, player.getMoney());
+    }
 }
