@@ -77,4 +77,11 @@ public class PlayerTest {
     public void canGetBet() {
         assertEquals(0, player.getBet());
     }
+
+    @Test
+    public void canBet(){
+        player.bet(10);
+        assertEquals(10, player.getBet());
+        assertEquals(90, player.getMoney());
+    }
 }
