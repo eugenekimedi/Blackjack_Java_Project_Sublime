@@ -7,8 +7,10 @@ public class Viewer {
 
 private static Game game;
 
+  public Viewer(Game game){
+    this.game = game;
+  }
   public void run(){
-    game = new Game();
 
     if (game.getDeck().cardCount() < 10) {
       game.useNewDeck();
@@ -43,7 +45,7 @@ private static Game game;
     int choice = 1;
     while (choice == 1){
       System.out.println("-------------Players Turn-------------");
-      System.out.println("Enter 1 to Hit\nEnter 2 to stay");
+      System.out.println("Enter 1 to Hit\nEnter any other number to stay");
       Scanner sc = new Scanner(System.in);
       choice = sc.nextInt();
       choice = game.playerTurn(choice);
@@ -55,13 +57,13 @@ private static Game game;
         return;
       }
     }
-    System.out.println("-------------Dealers Turn--------------");
-    System.out.println("Please enter 1 to continue");
-    Scanner sc = new Scanner(System.in);
-    int dealerChoice = sc.nextInt();
 
 
     while(game.getDealerScore()< 17) {
+      System.out.println("-------------Dealers Turn--------------");
+      System.out.println("Please enter any number to continue");
+      Scanner sc = new Scanner(System.in);
+      int dealerChoice = sc.nextInt();
       game.dealerTurn(1);
       printHands("dealer");
       printScores("both");
@@ -85,7 +87,7 @@ private static Game game;
   }
 
   public void replay(){
-    System.out.println("Enter 1 to Play again!!");
+    System.out.println("Enter 1 to Play again!! \nEnter any other number to quit");
     Scanner sc = new Scanner(System.in);
     int i = sc.nextInt();
     if (i==1){
